@@ -51,10 +51,6 @@ Este procedimiento garantiza que el proceso con el identificador más alto termi
 </ul>
 </p>
 
-<p align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Bully_Algorithm.svg/1200px-Bully_Algorithm.svg.png" alt="Bully Algorithm Diagram" width="600">
-</p>
-
 ## 📢 Requisitos
 - NetBeans IDE 17 o 19
 - JDK 19
