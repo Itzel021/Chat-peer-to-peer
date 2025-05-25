@@ -27,10 +27,33 @@ Una red P2P (Peer-to-Peer) representa un ecosistema de comunicación donde todos
 
 <li>Compartición de recursos: Los usuarios tienen la capacidad de compartir una variedad de recursos, desde archivos hasta servicios y conocimientos, con otros miembros de la red.</li>
 
-<li>Algoritmo de elección: Utilizado en sistemas distribuidos para seleccionar un coordinador o líder dinámicamente a partir de un grupo de procesos informáticos distribuidos.</li>
+<li>Algoritmo de elección (Bully): Utilizado en sistemas distribuidos para seleccionar un coordinador o líder dinámicamente a partir de un grupo de procesos informáticos distribuidos.</li>
 </ul>
 </p>
 
+🧠 ¿Qué es y cómo funciona el algoritmo de Bully?
+<p align="justify">
+El algoritmo de <strong>Bully</strong> (en español, "abusón") es un protocolo de elección de coordinador usado en sistemas distribuidos, donde es fundamental identificar un nodo líder que se encargue de tareas de coordinación, como la gestión de recursos compartidos o la sincronización de procesos. Este algoritmo es particularmente útil en redes P2P donde no hay un servidor central.
+
+Cuando un proceso detecta que el coordinador actual ha fallado (por ejemplo, al no recibir respuestas en cierto tiempo), inicia una elección enviando un mensaje a todos los procesos con un identificador mayor al suyo. Si ninguno de estos responde, el proceso que inició la elección se declara a sí mismo como el nuevo coordinador. Sin embargo, si alguno responde, ese otro proceso toma el control de la elección y repite el procedimiento, eliminando así a los procesos con identificadores menores (de ahí el nombre "Bully").
+
+Este procedimiento garantiza que el proceso con el identificador más alto termine siendo el coordinador, ya que es capaz de "intimidar" a los demás al responder y tomar el control del proceso de elección.
+</p>
+
+<p align="justify">
+<strong>Funcionamiento general:</strong>
+<ul>
+  <li>Un proceso detecta que el coordinador ha fallado.</li>
+  <li>Envía un mensaje de elección a todos los procesos con ID mayor.</li>
+  <li>Si nadie responde, se proclama coordinador y envía un mensaje a todos anunciándolo.</li>
+  <li>Si alguno responde, este toma el control y repite el proceso.</li>
+  <li>El proceso con el ID más alto será finalmente el coordinador.</li>
+</ul>
+</p>
+
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Bully_Algorithm.svg/1200px-Bully_Algorithm.svg.png" alt="Bully Algorithm Diagram" width="600">
+</p>
 ## 📢 Requisitos
 - NetBeans IDE 17 o 19
 - JDK 19
